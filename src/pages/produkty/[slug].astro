@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { produkty } from '../../data/produkty.js';
+
+// Tato funkce řekne Astru, které stránky má vygenerovat
+export async function getStaticPaths() {
+  return produkty.map(produkt => ({
+    params: { slug: produkt.slug },
+    props: { produkt },
+  }));
+}
+
+// Získáme data pro tuto konkrétní stránku
+const { produkt } = Astro.props;
+---
+
+<Layout title={produkt.nazev + " | Laboratoires.cz"}>
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+                
+                <div class="md:w-5/12">
+                    <img src={produkt.obrazek} alt={"Produkt " + produkt.nazev} class="rounded-lg shadow-lg w-full">
+                </div>
+
+                <div class="md:w-7/12">
+                    <h2 class="text-4xl md:text-5xl font-serif text-brand-primary mb-2">{produkt.nazev}</h2>
+                    <p class="text-brand-accent text-lg mb-6 font-medium">{produkt.podtitulek}</p>
+                    
+                    <div class="space-y-4 text-gray-600" set:html={produkt.obsahHTML} />
+
+                    <a href="/produkty" class="inline-block text-brand-accent pt-4 hover:underline">← Zpět na přehled produktů</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</Layout>

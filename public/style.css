@@ -1,0 +1,132 @@
+/* ————————————————————————————————————————————————————————————————
+   Základní styly
+——————————————————————————————————————————————————————————————— */
+body {
+    background-color: #ffffff;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.fade-in {
+    animation: fadeInAnimation 0.6s ease-out forwards;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Skrytí scrollbaru */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+
+/* ————————————————————————————————————————————————————————————————
+   Styly pro právní dokumenty a další textové stránky
+——————————————————————————————————————————————————————————————— */
+.legal-content h2 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 2.25rem; /* 36px */
+    color: #2d332a; 
+    margin-bottom: 1.5rem; 
+}
+
+.legal-content h3 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 1.5rem; /* 24px */
+    color: #2d332a; 
+    margin-top: 2.5rem; 
+    margin-bottom: 1.5rem; 
+    border-bottom: 1px solid #e5e7eb; 
+    padding-bottom: 0.5rem; 
+    font-weight: 600; 
+    line-height: 1.3; 
+}
+
+.legal-content p, 
+.legal-content li { 
+    margin-bottom: 1.25em; 
+    line-height: 1.7; 
+}
+
+.legal-content ul { 
+    list-style-position: inside; 
+    list-style-type: disc; 
+    padding-left: 1rem; 
+    margin-bottom: 1.25em; 
+}
+
+.legal-content strong { 
+    color: #1c1c1c; 
+    font-weight: 700; 
+}
+
+/* ————————————————————————————————————————————————————————————————
+   Nové styly pro kalkulačku (frosted glass karty & barevné jezdce)
+——————————————————————————————————————————————————————————————— */
+
+/* 1) Skleněné karty pro jednotlivé otázky */
+.question-card {
+    background: rgba(255,255,255,0.08);    /* jemné „frosted glass“ */
+    backdrop-filter: blur(6px);
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* 2) Slider s dynamickým barevným fill efektem */
+input[type=range] {
+    --thumb-size: 24px;
+    --track-height: 8px;
+    --fill-color: #2d332a;   /* brand-primary */
+    --empty-color: #e5e7eb;  /* gray-200 */
+    width: 100%;
+    height: var(--track-height);
+    border-radius: var(--track-height);
+    appearance: none;
+    cursor: pointer;
+    background: linear-gradient(
+        to right,
+        var(--fill-color) 0%,
+        var(--fill-color) var(--value),
+        var(--empty-color) var(--value),
+        var(--empty-color) 100%
+    );
+}
+
+input[type=range]::-webkit-slider-thumb {
+    appearance: none;
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    background: var(--fill-color);
+    border: 4px solid #f8f7f5;    /* brand-secondary */
+    border-radius: 50%;
+    margin-top: calc((var(--track-height) - var(--thumb-size)) / 2);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+input[type=range]::-moz-range-thumb {
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    background: var(--fill-color);
+    border: 4px solid #f8f7f5;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}

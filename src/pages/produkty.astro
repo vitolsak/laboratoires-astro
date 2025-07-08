@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { produkty } from '../data/produkty.js'; // Importujeme data o produktech
+---
+<Layout title="Naše Produkty | Laboratoires.cz">
+
+<section class="pt-24 pb-16 md:pt-32 md:pb-24 bg-brand-secondary">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-serif text-brand-primary mb-2">Naše produkty</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Každý z našich doplňků stravy vzniká jako odpověď na konkrétní potřeby moderního života. Spojujeme odborné znalosti biochemiků a farmaceutů s důrazem na kvalitu, čistotu a funkčnost.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            {produkty.map(produkt => (
+                <a href={`/produkty/${produkt.slug}`} class="group bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                    <div class="overflow-hidden rounded-md mb-5">
+                        <img loading="lazy" src={produkt.obrazek} alt={produkt.nazev} class="product-image w-full h-auto transition-transform duration-300 group-hover:scale-105">
+                    </div>
+                    <h4 class="font-bold text-xl text-brand-primary">{produkt.nazev}</h4>
+                    <p class="text-gray-500 text-sm my-3 flex-grow">{produkt.podtitulek}</p>
+                    <span class="btn-primary mt-4 inline-block bg-brand-primary group-hover:bg-brand-text text-white font-bold py-2 px-8 rounded-full transition-colors duration-300">Zjistit více</span>
+                </a>
+            ))}
+            
+        </div>
+    </div>
+</section>
+
+</Layout>
