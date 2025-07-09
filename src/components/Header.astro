@@ -9,6 +9,7 @@ const { pathname } = Astro.url;
         </a>
         <nav class="hidden md:flex items-center space-x-8">
             <a href="/produkty" class:list={[ "nav-link hover:text-brand-accent", { "text-brand-accent font-bold": pathname.startsWith('/produkty') } ]}>Produkty</a>
+            <a href="/kalkulacka" class:list={[ "nav-link hover:text-brand-accent", { "text-brand-accent font-bold": pathname === '/kalkulacka' } ]}>Poradce výběru</a>
             <a href="/o-nas" class:list={[ "nav-link hover:text-brand-accent", { "text-brand-accent font-bold": pathname === '/o-nas' } ]}>O nás</a>
             <a href="/kontakt" class:list={[ "nav-link hover:text-brand-accent", { "text-brand-accent font-bold": pathname === '/kontakt' } ]}>Kontakt</a>
         </nav>
@@ -20,6 +21,7 @@ const { pathname } = Astro.url;
     </div>
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
         <a href="/produkty" class:list={[ "block text-center py-3 px-6 hover:bg-gray-100 transition-colors", { "text-brand-accent font-bold": pathname.startsWith('/produkty') } ]}>Produkty</a>
+        <a href="/kalkulacka" class:list={[ "block text-center py-3 px-6 hover:bg-gray-100 transition-colors", { "text-brand-accent font-bold": pathname === '/kalkulacka' } ]}>Poradce výběru</a>
         <a href="/kontakt" class:list={[ "block text-center py-3 px-6 hover:bg-gray-100 transition-colors", { "text-brand-accent font-bold": pathname === '/kontakt' } ]}>Kontakt</a>
     </div>
 </header> 

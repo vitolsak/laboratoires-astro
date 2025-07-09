@@ -1,0 +1,151 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Poradce výběru | Laboratoires.cz">
+
+    <style>
+        input[type=range] { --value: 50%; -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: #e5e7eb; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; background: linear-gradient( to right, #2d332a 0%, #2d332a var(--value), #e5e7eb var(--value), #e5e7eb 100% ); }
+        input[type=range]:hover { opacity: 1; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; background: #2d332a; cursor: pointer; border-radius: 50%; border: 4px solid #f8f7f5; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        input[type=range]::-moz-range-thumb { width: 24px; height: 24px; background: #2d332a; cursor: pointer; border-radius: 50%; border: 4px solid #f8f7f5; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        #result-products.is-single-item {
+  display: flex;
+  justify-content: center;
+}
+    </style>
+
+    <main class="fade-in">
+        <section class="py-16 md:py-24 bg-brand-secondary">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-serif text-brand-primary mb-2">Poradce výběru doplňků</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Odpovězte na několik otázek a my vám pomůžeme najít ten správný produkt pro vaše potřeby.</p>
+                </div>
+
+                <div class="max-w-3xl mx-auto">
+                    <div id="calculator-questions" class="space-y-8"></div>
+                    <div class="text-center mt-10">
+                        <button id="calculate-button" class="bg-brand-primary hover:bg-brand-text text-white font-bold py-3 px-12 rounded-full text-lg shadow-lg transition-colors duration-300">
+                            Najít doporučení
+                        </button>
+                    </div>
+                </div>
+
+                <div id="result-section" class="max-w-3xl mx-auto mt-12 hidden">
+                    <div>
+                        <div id="result-content" class="text-center">
+                            <h3 class="text-2xl md:text-3xl font-serif text-brand-primary mb-6">Na míru pro vás doporučujeme:</h3>
+                            <div id="result-products" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script>
+        const dataset = {
+          questions: [ { "id": "Q1", "text": "Jak se cítíte po probuzení?", "scale": { "1": "Velmi unaveně, těžko vstávám", "5": "Plný/á energie, odpočatý/á" } }, { "id": "Q2", "text": "Jakou máte úroveň energie kolem třetí hodiny odpoledne?", "scale": { "1": "Velký útlum, chce se mi spát", "5": "Stále plný/á síly" } }, { "id": "Q3", "text": "Jak dobře se dokážete soustředit na práci nebo učení?", "scale": { "1": "Vůbec, myšlenky mi utíkají", "5": "Výborně, nic mě nerozptýlí" } }, { "id": "Q4", "text": "Jak dobře zvládáte stresové situace během dne?", "scale": { "1": "Velmi špatně, snadno mě něco rozhodí", "5": "S klidem a přehledem" } }, { "id": "Q5", "text": "Jak kvalitní je váš spánek?", "scale": { "1": "Špatný, často se budím", "5": "Vynikající, spím celou noc" } }, { "id": "Q6", "text": "Jak se cítí vaše svaly po běžném dni nebo po sportu?", "scale": { "1": "Často unavené, napjaté nebo mívám křeče", "5": "Uvolněné a v pohodě" } }, { "id": "Q7", "text": "Jak odolný/á se cítíte vůči běžnému nachlazení?", "scale": { "1": "Chytnu skoro všechno", "5": "Jsem velmi odolný/á" } }, { "id": "Q8", "text": "Jak se cítíte po jídle?", "scale": { "1": "Často cítím těžkost nebo nadýmání", "5": "Lehce a plný/á energie" } }, { "id": "Q9", "text": "Jaká je vaše pravidelná fyzická zátěž?", "scale": { "1": "Minimální, sedavé zaměstnání", "5": "Vysoká, pravidelně sportuji" } }, { "id": "Q10", "text": "Jak byste celkově ohodnotil/a svou životní energii a vitalitu?", "scale": { "1": "Velmi nízká", "5": "Velmi vysoká" } } ],
+          profiles: [ { "profileName": "Student / Manažer", "scores": [2, 2, 1, 2, 3, 4, 3, 4, 2, 2], "recommendedProducts": ["Energie & Paměť"] }, { "profileName": "Sportovec", "scores": [4, 3, 4, 3, 2, 1, 4, 5, 5, 3], "recommendedProducts": ["Magnesium Komplex"] }, { "profileName": "Oslabená imunita", "scores": [2, 2, 3, 3, 3, 4, 1, 1, 2, 1], "recommendedProducts": ["Imunita", "Probiotika"] }, { "profileName": "Problémy s trávením", "scores": [3, 3, 4, 3, 4, 5, 3, 1, 3, 2], "recommendedProducts": ["Probiotika"] }, { "profileName": "Unavený rodič / Stres", "scores": [1, 2, 2, 1, 2, 2, 2, 3, 2, 1], "recommendedProducts": ["Magnesium Komplex", "Energie & Paměť"] }, { "profileName": "Preventivní péče", "scores": [4, 4, 4, 4, 5, 5, 3, 4, 4, 4], "recommendedProducts": ["Vitamín C"] }, { "profileName": "Mentální vyhoření", "scores": [1, 1, 1, 1, 2, 3, 2, 3, 1, 1], "recommendedProducts": ["Energie & Paměť", "Magnesium Komplex"] }, { "profileName": "Celkové vyčerpání", "scores": [1, 1, 2, 2, 2, 2, 1, 2, 2, 1], "recommendedProducts": ["Imunita", "Magnesium Komplex"] } ],
+          products: [
+              { slug: 'energie', nazev: 'Energie & Paměť', podtitulek: 'Pro vaši bystrou mysl', kratkyPopis: 'Pro maximální soustředění a podporu kognitivních funkcí.', obrazek: '/obrazky/Energie.jpg' },
+              { slug: 'imunita', nazev: 'Imunita', podtitulek: 'Pro vaši odolnost', kratkyPopis: 'Podpora obranyschopnosti s vitamíny C, D a zinkem.', obrazek: '/obrazky/Imunita.jpg' },
+              { slug: 'magnesium', nazev: 'Magnesium Komplex', podtitulek: 'Pro relaxaci a regeneraci', kratkyPopis: 'Proti únavě a pro normální činnost svalů a nervů.', obrazek: '/obrazky/Magnesium.jpg' },
+              { slug: 'probiotika', nazev: 'Probiotika', podtitulek: 'Pro zdravé trávení', kratkyPopis: 'Pro zdravou střevní mikroflóru a správné zažívání.', obrazek: '/obrazky/Probiotika.jpg' },
+              { slug: 'vitamin-c', nazev: 'Vitamín C', podtitulek: 'Základní stavební kámen', kratkyPopis: 'Klíčový antioxidant pro vaši vitalitu a imunitu.', obrazek: '/obrazky/Vitamin.jpg' }
+          ]
+        };
+
+        function updateRangeInputStyles() {
+            document.querySelectorAll('input[type="range"]').forEach(range => {
+                const percentage = (range.value - range.min) / (range.max - range.min) * 100;
+                range.style.setProperty('--value', percentage + '%');
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const questionsContainer = document.getElementById('calculator-questions');
+            const calculateButton = document.getElementById('calculate-button');
+            const resultSection = document.getElementById('result-section');
+
+            if (!questionsContainer || !calculateButton || !resultSection) return;
+
+            dataset.questions.forEach(q => {
+                const questionEl = document.createElement('div');
+                questionEl.innerHTML = `
+                    <label for="${q.id}" class="block text-lg font-medium text-brand-text mb-3 text-center">${q.text}</label>
+                    <input type="range" id="${q.id}" min="1" max="5" value="3" class="w-full">
+                    <div class="flex justify-between text-xs text-gray-500 mt-2 px-1">
+                        <span>${q.scale['1']}</span>
+                        <span>${q.scale['5']}</span>
+                    </div>
+                `;
+                questionsContainer.appendChild(questionEl);
+            });
+
+            updateRangeInputStyles();
+            
+            questionsContainer.addEventListener('input', (event) => {
+                if (event.target.type === 'range') {
+                    updateRangeInputStyles();
+                }
+            });
+
+            calculateButton.addEventListener('click', () => {
+                const userAnswers = dataset.questions.map(q => parseInt(document.getElementById(q.id).value, 10));
+                let bestMatch = null;
+                let minDistance = Infinity;
+
+                dataset.profiles.forEach(profile => {
+                    let distance = profile.scores.reduce((sum, score, i) => sum + Math.abs(userAnswers[i] - score), 0);
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        bestMatch = profile;
+                    }
+                });
+                
+                displayResult(bestMatch);
+            });
+        
+ function displayResult(profile) {
+    const productsContainer = document.getElementById('result-products');
+    const resultSection = document.getElementById('result-section');
+    productsContainer.innerHTML = ''; 
+
+    // KROK 1: Přidání/odebrání třídy pro centrování
+    if (profile.recommendedProducts.length === 1) {
+        productsContainer.classList.add('is-single-item');
+    } else {
+        productsContainer.classList.remove('is-single-item');
+    }
+
+    profile.recommendedProducts.forEach(productName => {
+        const productData = dataset.products.find(p => p.nazev === productName);
+        if (!productData) return;
+
+        const productEl = document.createElement('a');
+        productEl.href = `/produkty/${productData.slug}`;
+        productEl.className = 'group bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-xl transition-shadow duration-300 flex flex-col';
+
+        // KROK 2: Oprava oříznutého obrázku změnou 'object-cover' na 'object-contain'
+        productEl.innerHTML = `
+            <div class="overflow-hidden rounded-md mb-5">
+                <img src="${productData.obrazek}" alt="${productData.nazev}" class="product-image w-full h-48 object-contain transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <h4 class="font-bold text-xl text-brand-primary">${productData.nazev}</h4>
+            <p class="text-gray-500 text-sm my-3 flex-grow">${productData.kratkyPopis}</p>
+            <span class="mt-4 inline-block bg-brand-primary text-white font-bold py-2 px-8 rounded-full transition-colors duration-300">
+                Zjistit více
+            </span>
+        `;
+        productsContainer.appendChild(productEl);
+    });
+
+    resultSection.classList.remove('hidden');
+    resultSection.classList.add('fade-in');
+    resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+        });
+    </script>
+</Layout>

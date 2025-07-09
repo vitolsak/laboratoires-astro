@@ -54,3 +54,27 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+// --- Kód pro dynamické stylování posuvníků ---
+
+// Tato funkce najde všechny posuvníky na stránce a nastaví jim správnou barvu pozadí
+function updateRangeInputStyles() {
+  const allRanges = document.querySelectorAll('input[type="range"]');
+  allRanges.forEach(range => {
+    // Vypočítáme procentuální hodnotu posuvníku
+    const percentage = (range.value - range.min) / (range.max - range.min) * 100;
+    // Nastavíme CSS proměnnou '--value', kterou používají naše styly
+    range.style.setProperty('--value', percentage + '%');
+  });
+}
+
+// Funkci spustíme hned po načtení stránky, aby se posuvníky správně zobrazily
+document.addEventListener('DOMContentLoaded', () => {
+    updateRangeInputStyles();
+
+    // Také ji spustíme pokaždé, když se změní hodnota jakéhokoliv posuvníku
+    document.body.addEventListener('input', (event) => {
+        if (event.target.type === 'range') {
+            updateRangeInputStyles();
+        }
+    });
+});
