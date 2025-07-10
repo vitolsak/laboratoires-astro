@@ -2,9 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import { produkty } from '../data/produkty.js';
 import { Image } from 'astro:assets';
-
-// Vytvoříme mapu obrázků, aby je Astro našlo a optimalizovalo
-const obrazky = await Astro.glob('../../assets/obrazky/*.{jpeg,jpg,png,gif}');
 ---
 <Layout title="Naše Produkty | Laboratoires.cz" description="Prozkoumejte naši kompletní nabídku chytrých doplňků stravy pro energii, imunitu, relaxaci a zdravé trávení.">
 
@@ -17,22 +14,16 @@ const obrazky = await Astro.glob('../../assets/obrazky/*.{jpeg,jpg,png,gif}');
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            {produkty.map(produkt => {
-                // Najdeme odpovídající optimalizovaný obrázek
-                const optimalizovanyObrazek = obrazky.find(obr => obr.default.src.endsWith(produkt.obrazek));
-                return (
-                    <a href={`/produkty/${produkt.slug}`} class="group bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                        <div class="overflow-hidden rounded-md mb-5">
-                            {optimalizovanyObrazek && (
-                                <Image src={optimalizovanyObrazek.default} alt={produkt.nazev} class="product-image w-full h-auto aspect-[1/1] object-contain transition-transform duration-300 group-hover:scale-105" width={400} />
-                            )}
-                        </div>
-                        <h4 class="font-bold text-xl text-brand-primary">{produkt.nazev}</h4>
-                        <p class="text-gray-500 text-sm my-3 flex-grow">{produkt.podtitulek}</p>
-                        <span class="btn-primary mt-4 inline-block bg-brand-primary group-hover:bg-brand-text text-white font-bold py-2 px-8 rounded-full transition-colors duration-300">Zjistit více</span>
-                    </a>
-                )
-            })}
+            {produkty.map(produkt => (
+                <a href={`/produkty/${produkt.slug}`} class="group bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                    <div class="overflow-hidden rounded-md mb-5">
+                        <Image src={produkt.obrazek} alt={produkt.nazev} class="product-image w-full h-auto aspect-square object-contain transition-transform duration-300 group-hover:scale-105" width={400} />
+                    </div>
+                    <h4 class="font-bold text-xl text-brand-primary">{produkt.nazev}</h4>
+                    <p class="text-gray-500 text-sm my-3 flex-grow">{produkt.podtitulek}</p>
+                    <span class="btn-primary mt-4 inline-block bg-brand-primary group-hover:bg-brand-text text-white font-bold py-2 px-8 rounded-full transition-colors duration-300">Zjistit více</span>
+                </a>
+            ))}
             
         </div>
     </div>
