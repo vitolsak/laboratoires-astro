@@ -1,14 +1,16 @@
-import imgEnergie from '@/assets/obrazky/Energie.jpg';
-import imgImunita from '@/assets/obrazky/Imunita.jpg';
-import imgMagnesium from '@/assets/obrazky/Magnesium.jpg';
-import imgProbiotika from '@/assets/obrazky/Probiotika.jpg';
-import imgVitaminC from '@/assets/obrazky/Vitamin.jpg';
+// Opravené relativní cesty k obrázkům
+import imgEnergie from '../assets/obrazky/Energie.jpg';
+import imgImunita from '../assets/obrazky/Imunita.jpg';
+import imgMagnesium from '../assets/obrazky/Magnesium.jpg';
+import imgProbiotika from '../assets/obrazky/Probiotika.jpg';
+import imgVitaminC from '../assets/obrazky/Vitamin.jpg';
 
 export const produkty = [
     {
         slug: 'energie',
         nazev: 'Energie & Paměť',
         podtitulek: 'Pro vaši bystrou mysl',
+        kratkyPopis: 'Pro maximální soustředění a podporu kognitivních funkcí.',
         obrazek: imgEnergie,
         obsahHTML: `
             <p>Ať už se učíte na zkoušku, připravujete důležitou prezentaci, nebo se jen potřebujete plně soustředit na práci, náš produkt je váš ideální partner pro podporu kognitivních funkcí.</p>
