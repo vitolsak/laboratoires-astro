@@ -2,6 +2,9 @@
 import Layout from '../../layouts/Layout.astro';
 import { produkty } from '../../data/produkty.js';
 
+// TENTO ŘÁDEK JE NOVÝ A KLÍČOVÝ
+export const prerender = true;
+
 // Tato funkce řekne Astru, které stránky má vygenerovat
 export async function getStaticPaths() {
   return produkty.map(produkt => ({
