@@ -1,8 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { produkty } from '../data/produkty.js'; // Importujeme data
+import { produkty } from '../data/produkty.js';
+import { Image } from 'astro:assets';
+
+// Importujeme všechny obrázky, které budeme optimalizovat
+import imgKompozice from '../assets/obrazky/kompozice.jpg';
+import imgTym from '../assets/obrazky/tym.png';
 ---
-<Layout title="Vítejte na Evermo.cz">
+<Layout title="Vítejte na Evermo.cz" description="Chytré doplňky stravy pro moderní životní styl. Objevte produkty pro energii, imunitu a celkovou vitalitu, navržené týmem biochemiků a farmaceutů.">
 
 <section class="bg-white pt-16 pb-20 md:py-24">
     <div class="container mx-auto px-6">
@@ -13,7 +18,7 @@ import { produkty } from '../data/produkty.js'; // Importujeme data
                 <a href="/produkty" class="btn-primary inline-block bg-brand-primary hover:bg-brand-text text-white font-bold py-3 px-10 rounded-full text-lg shadow-lg">Objevit produkty</a>
             </div>
             <div class="md:w-1/2 w-full h-80 md:h-[450px] mt-8 md:mt-0 relative">
-                 <div class="absolute inset-0 bg-contain bg-no-repeat bg-center" style="background-image: url('/obrazky/kompozice.jpg');"></div>
+                 <div class="absolute inset-0 bg-contain bg-no-repeat bg-center" style={`background-image: url(${imgKompozice.src});`}></div>
             </div>
         </div>
     </div>
@@ -76,7 +81,9 @@ import { produkty } from '../data/produkty.js'; // Importujeme data
 <section id="home-o-nas" class="py-16 md:py-24 bg-white">
     <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-16">
-            <div class="md:w-1/2 flex justify-center"><img src="/obrazky/tym.png" class="w-full md:w-3/4 rounded-lg shadow-lg" style="mask-image: radial-gradient(circle, black 60%, transparent 100%); -webkit-mask-image: radial-gradient(circle, black 60%, transparent 100%);"/> </div>
+            <div class="md:w-1/2 flex justify-center">
+                <Image src={imgTym} alt="Náš tým" class="w-full md:w-3/4 rounded-lg shadow-lg" style="mask-image: radial-gradient(circle, black 60%, transparent 100%); -webkit-mask-image: radial-gradient(circle, black 60%, transparent 100%);" width={600} />
+            </div>
             <div class="md:w-7/12">
                 <h2 class="text-3xl md:text-4xl font-serif text-brand-primary mb-4">Naše filozofie</h2>
                 <p class="text-lg text-gray-600 mb-4">Ve Laboratoires spojujeme přesnost vědy s moudrostí přírody. Naším cílem je vyvíjet vysoce kvalitní a funkční doplňky stravy, které jsou dostupné pro každého – bez kompromisů.Každý produkt je výsledkem pečlivého výzkumu a vývoje, za kterým stojí náš tým zkušených farmaceutů a biochemiků.</p>

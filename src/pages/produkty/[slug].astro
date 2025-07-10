@@ -1,11 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { produkty } from '../../data/produkty.js';
+import { Image } from 'astro:assets'; // Přidali jsme import Image
 
-// TENTO ŘÁDEK JE NOVÝ A KLÍČOVÝ
 export const prerender = true;
 
-// Tato funkce řekne Astru, které stránky má vygenerovat
 export async function getStaticPaths() {
   return produkty.map(produkt => ({
     params: { slug: produkt.slug },
@@ -13,7 +12,6 @@ export async function getStaticPaths() {
   }));
 }
 
-// Získáme data pro tuto konkrétní stránku
 const { produkt } = Astro.props;
 ---
 
@@ -23,7 +21,7 @@ const { produkt } = Astro.props;
             <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
                 
                 <div class="md:w-5/12">
-                    <img src={produkt.obrazek} alt={"Produkt " + produkt.nazev} class="rounded-lg shadow-lg w-full">
+                    <Image src={produkt.obrazek} alt={"Produkt " + produkt.nazev} class="rounded-lg shadow-lg w-full" width={800} height={800} />
                 </div>
 
                 <div class="md:w-7/12">

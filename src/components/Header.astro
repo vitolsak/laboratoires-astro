@@ -1,11 +1,14 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '@/assets/obrazky/logo.jpg';
+
 // Získáme aktuální URL adresu stránky
 const { pathname } = Astro.url;
 ---
 <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
         <a href="/" class="h-10">
-            <img src="/obrazky/logo.jpg" alt="Logo Laboratoires" class="h-full w-auto">
+            <Image src={logo} alt="Logo Laboratoires" class="h-full w-auto">
         </a>
         <nav class="hidden md:flex items-center space-x-8">
             <a href="/produkty" class:list={[ "nav-link hover:text-brand-accent", { "text-brand-accent font-bold": pathname.startsWith('/produkty') } ]}>Produkty</a>

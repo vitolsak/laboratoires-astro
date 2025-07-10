@@ -1,8 +1,14 @@
+---
+import { Image } from 'astro:assets';
+import logo from '@/assets/obrazky/logo.jpg';
+---
 <footer class="bg-white text-brand-text border-t border-gray-200">
     <div class="container mx-auto px-6 py-12">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-                <a href="/"><img src="/obrazky/logo.jpg" alt="Logo Laboratoires" class="h-10 w-auto mb-4"></a>
+                <a href="/">
+                    <Image src={logo} alt="Logo Laboratoires" class="h-10 w-auto mb-4" width={150} />
+                </a>
                 <p class="text-gray-600">Chytré doplňky stravy pro moderní životní styl.</p>
             </div>
             <div>
@@ -18,7 +24,7 @@
                 <ul class="space-y-2 text-gray-600">
                     <li><a href="/obchodni-podminky" class="hover:text-brand-primary transition-colors">Obchodní podmínky</a></li>
                     <li><a href="/ochrana-udaju" class="hover:text-brand-primary transition-colors">Ochrana osobních údajů</a></li>
-                    <li class="pt-2 text-xs">P&A Thrax s.r.o., IČ: 28657985<br>Nerudova 8, 703 00 Ostrava</li>
+                    <li class="pt-2 text-xs">P&A Thrax s.r.o., IČ: 28657985<br/>Nerudova 8, 703 00 Ostrava</li>
                 </ul>
             </div>
             <div>
