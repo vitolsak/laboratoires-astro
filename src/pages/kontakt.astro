@@ -19,7 +19,7 @@ if (Astro.request.method === 'POST') {
     await resend.emails.send({
       from: 'Kontaktni Formular <formular@evermo.cz>', // E-mail, který jste ověřili u Resend
       to: import.meta.env.RECIPIENT_EMAIL, // E-mail příjemce z prostředí Netlify
-      subject: `Nová zpráva z webu od ${name}`,
+      subject: `Nová zpráva z webu Laboratoires.cz od ${name}`,
       reply_to: email,
       html: `<p>Jméno: ${name}</p><p>Email: ${email}</p><p>Zpráva: ${message}</p>`,
     });
