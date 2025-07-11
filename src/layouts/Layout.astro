@@ -17,7 +17,8 @@ const { title } = Astro.props;
     <link rel="icon" href="/obrazky/logo.jpg" type="image/jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="preload" href="/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/style.css"></noscript>
 </head>
 <body class="text-brand-text font-sans">
     <Header />
