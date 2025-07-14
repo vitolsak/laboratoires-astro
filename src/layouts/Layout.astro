@@ -15,7 +15,6 @@ const { title } = Astro.props;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <link rel="icon" href="/obrazky/logo.jpg" type="image/jpeg">
-  <!-- žádné <Astro.head /> -->
 </head>
 <body class="text-brand-text font-sans">
   <Header />
@@ -23,6 +22,7 @@ const { title } = Astro.props;
     <slot />
   </main>
   <Footer />
-  <script src="/script.js" async></script>
+  <!-- Tady defer místo async -->
+  <script src="/script.js" defer></script>
 </body>
 </html>
