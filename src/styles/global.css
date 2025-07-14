@@ -1,7 +1,25 @@
-/* Tailwind import */
+/* 1. Tailwind core */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 2. Vlastní komponentní vrstva pro stránky s .legal-content */
+@layer components {
+  /* Nadpis úrovně 2 */
+  .legal-content h2 {
+    @apply text-3xl font-serif mb-4;
+  }
+  /* Nadpis úrovně 3 */
+  .legal-content h3 {
+    @apply text-xl font-serif mt-8 mb-2;
+  }
+  /* Odstavce */
+  .legal-content p {
+    @apply leading-relaxed mb-4;
+  }
+}
+
+/* 3. Font-face definice */
 
 /* Playfair Display */
 @font-face {
@@ -9,24 +27,23 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('/fonts/playfair-display-v39-latin_latin-ext-600.woff2') format('woff2'); 
+  src: url('/fonts/playfair-display-v39-latin_latin-ext-600.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Playfair Display';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/fonts/playfair-display-v39-latin_latin-ext-700.woff2') format('woff2'); 
+  src: url('/fonts/playfair-display-v39-latin_latin-ext-700.woff2') format('woff2');
 }
-
 
 /* Inter */
 @font-face {
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 300; /* TOTO JE TEN NOVÝ, DŮLEŽITÝ FONT */
+  font-weight: 300;
   font-display: swap;
-  src: url('/fonts/inter-v19-latin_latin-ext-300.woff2') format('woff2'); /* Zkontrolujte název souboru! */
+  src: url('/fonts/inter-v19-latin_latin-ext-300.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Inter';
