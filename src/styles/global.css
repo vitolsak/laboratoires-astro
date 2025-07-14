@@ -1,5 +1,7 @@
 /* Tailwind import */
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Playfair Display */
 @font-face {
@@ -7,14 +9,14 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('/fonts/playfair-display-v39-latin-600.woff2') format('woff2'); 
+  src: url('/fonts/playfair-display-v39-latin_latin-ext-600.woff2') format('woff2'); 
 }
 @font-face {
   font-family: 'Playfair Display';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/fonts/playfair-display-v39-latin-700.woff2') format('woff2'); 
+  src: url('/fonts/playfair-display-v39-latin_latin-ext-700.woff2') format('woff2'); 
 }
 
 
@@ -24,19 +26,19 @@
   font-style: normal;
   font-weight: 300; /* TOTO JE TEN NOVÝ, DŮLEŽITÝ FONT */
   font-display: swap;
-  src: url('/fonts/inter-v19-latin-300.woff2') format('woff2'); /* Zkontrolujte název souboru! */
+  src: url('/fonts/inter-v19-latin_latin-ext-300.woff2') format('woff2'); /* Zkontrolujte název souboru! */
 }
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/inter-v19-latin-regular.woff2') format('woff2');
+  src: url('/fonts/inter-v19-latin_latin-ext-regular.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/fonts/inter-v19-latin-700.woff2') format('woff2');
+  src: url('/fonts/inter-v19-latin_latin-ext-700.woff2') format('woff2');
 }
