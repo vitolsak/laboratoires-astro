@@ -1,10 +1,13 @@
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
-import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server', // Tato řádka je klíčová
-  adapter: netlify(), // Tato řádka říká, jak se má web "zabalit" pro Netlify
+  // ZMĚNA 1: Přepnuto na 'static'
+  output: 'static', 
+
+  // ZMĚNA 2: Adaptér pro statický web není potřeba, smažeme ho
+  // adapter: netlify(), 
+
   integrations: [tailwind()]
 });
