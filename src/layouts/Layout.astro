@@ -9,6 +9,7 @@ export interface Props {
 }
 const { title, description } = Astro.props;
 const GA_ID = 'G-1E19PME6H0';
+const SITE_VERIFICATION = '5DONv7f5Kp_CtWxJvQfPjBbxSxQqHH4YFmYBxiGR1Os';
 ---
 <!doctype html>
 <html lang="cs">
@@ -19,18 +20,20 @@ const GA_ID = 'G-1E19PME6H0';
   {description && <meta name="description" content={description} />}
 
   <!-- Google Site Verification -->
-  <meta name="google-site-verification" content="5DONv7f5Kp_CtWxJvQfPjBbxSxQqHH4YFmYBxiGR1Os" />
+  <meta name="google-site-verification" content={SITE_VERIFICATION} />
 
-  <link rel="icon" href="/obrazky/logo.jpg" type="image/jpeg">
+  <link rel="icon" href="/obrazky/logo.jpg" type="image/jpeg" />
 
-    <!-- Google tag (gtag.js) -->
-+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1E19PME6H0"></script>
-+    <script>
-+      window.dataLayer = window.dataLayer || [];
-+      function gtag(){dataLayer.push(arguments);}
-+      gtag('js', new Date());
-+      gtag('config', 'G-1E19PME6H0');
-+    </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+  <script>
+    {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${G-1E19PME6H0}');
+    `}
+  </script>
 </head>
 <body class="text-brand-text font-sans">
   <Header />
