@@ -3,6 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Explicitní velikost pro všechna h1 */
+@layer base {
+  h1 {
+    @apply text-4xl md:text-5xl leading-tight;
+  }
+}
+
+
 /* 2. Vlastní komponentní vrstva pro stránky s .legal-content */
 @layer components {
   /* Nadpis úrovně 2 */
