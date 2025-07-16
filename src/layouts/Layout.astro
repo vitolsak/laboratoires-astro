@@ -8,7 +8,6 @@ export interface Props {
   description?: string;
 }
 const { title, description } = Astro.props;
-const GA_ID = 'G-1E19PME6H0';
 ---
 <!doctype html>
 <html lang="cs">
@@ -17,17 +16,16 @@ const GA_ID = 'G-1E19PME6H0';
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   {description && <meta name="description" content={description} />}
+
   <link rel="icon" href="/obrazky/logo.jpg" type="image/jpeg">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1E19PME6H0"></script>
   <script>
-    {`
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${GA_ID}');
-    `}
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1E19PME6H0');
   </script>
 </head>
 <body class="text-brand-text font-sans">
