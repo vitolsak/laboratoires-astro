@@ -59,3 +59,61 @@
   font-display: swap;
   src: url('/fonts/inter-v19-latin_latin-ext-700.woff2') format('woff2');
 }
+
+/* 4. Styly pro posuvníky (input[type=range]) */
+/* ========================================================================== */
+
+input[type=range] {
+    /* Proměnné pro snadnou úpravu barev */
+    --fill-color: #2d332a;          /* Tmavá barva (brand-primary) pro výplň a jezdce */
+    --thumb-border-color: #f8f7f5;  /* Světlá barva (brand-secondary) pro okraj jezdce */
+    --value: 50%;                   /* Výchozí hodnota, aktualizuje se přes JS */
+
+    /* Základní styly pro 'kolejnice' */
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #e5e7eb; /* Barva prázdné části */
+    border-radius: 5px;
+    outline: none;
+    
+    /* Vytvoření barevné výplně pomocí gradientu */
+    background: linear-gradient(
+        to right,
+        var(--fill-color) 0%,
+        var(--fill-color) var(--value),
+        #e5e7eb var(--value),
+        #e5e7eb 100%
+    );
+}
+
+/* Efekt při najetí myší */
+input[type=range]:hover {
+    opacity: 1;
+}
+
+/* Styl pro jezdce (kolečko) pro Webkit prohlížeče (Chrome, Safari) */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: var(--fill-color);
+    cursor: pointer;
+    border-radius: 50%;
+    border: 4px solid var(--thumb-border-color);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    /* Řádek s margin-top nebo transform je smazaný */
+}
+
+/* Styl pro jezdce pro Firefox */
+input[type=range]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: var(--fill-color);
+    cursor: pointer;
+    border-radius: 50%;
+    border: 4px solid var(--thumb-border-color);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
