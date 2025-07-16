@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import teamImage from '../assets/obrazky/tym.png';
 ---
 <Layout title="O nás | Laboratoires.cz">
 
@@ -7,7 +9,13 @@ import Layout from '../layouts/Layout.astro';
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-16">
                 <div class="md:w-1/2 flex justify-center">
-                    <img loading="lazy" src="/obrazky/tym.png" class="w-full max-w-md rounded-lg shadow-lg" style="mask-image: radial-gradient(circle, black 60%, transparent 100%); -webkit-mask-image: radial-gradient(circle, black 60%, transparent 100%);">
+                    <Image 
+                        src={teamImage} 
+                        alt="Tým Laboratoires" 
+                        width={800} 
+                        class="w-full max-w-md rounded-lg shadow-lg" 
+                        style="mask-image: radial-gradient(circle, black 60%, transparent 100%); -webkit-mask-image: radial-gradient(circle, black 60%, transparent 100%);"
+                    />
                 </div>
                 <div class="md:w-7/12">
                     <h2 class="text-3xl md:text-4xl font-serif text-brand-primary mb-4">Naše filozofie</h2>

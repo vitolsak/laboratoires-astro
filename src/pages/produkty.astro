@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { produkty } from '../data/produkty.js'; // Importujeme data o produktech
+import { produkty } from '../data/produkty.js';
+import { Image } from 'astro:assets';
 ---
-<Layout title="Naše Produkty | Laboratoires.cz">
+<Layout title="Naše Produkty | Laboratoires.cz" description="Prozkoumejte naši kompletní nabídku chytrých doplňků stravy pro energii, imunitu, relaxaci a zdravé trávení.">
 
 <section class="pt-24 pb-16 md:pt-32 md:pb-24 bg-brand-secondary">
     <div class="container mx-auto px-6">
@@ -16,7 +17,7 @@ import { produkty } from '../data/produkty.js'; // Importujeme data o produktech
             {produkty.map(produkt => (
                 <a href={`/produkty/${produkt.slug}`} class="group bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-xl transition-shadow duration-300 flex flex-col">
                     <div class="overflow-hidden rounded-md mb-5">
-                        <img loading="lazy" src={produkt.obrazek} alt={produkt.nazev} class="product-image w-full h-auto transition-transform duration-300 group-hover:scale-105">
+                        <Image src={produkt.obrazek} alt={produkt.nazev} class="product-image w-full h-auto aspect-square object-contain transition-transform duration-300 group-hover:scale-105" width={400} />
                     </div>
                     <h4 class="font-bold text-xl text-brand-primary">{produkt.nazev}</h4>
                     <p class="text-gray-500 text-sm my-3 flex-grow">{produkt.podtitulek}</p>

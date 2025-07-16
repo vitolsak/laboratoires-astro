@@ -1,27 +1,117 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '../assets/obrazky/logo.jpg';
+
 // Získáme aktuální URL adresu stránky
 const { pathname } = Astro.url;
 ---
 <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="/" class="h-10">
-            <img src="/obrazky/logo.jpg" alt="Logo Laboratoires" class="h-full w-auto">
-        </a>
-        <nav class="hidden md:flex items-center space-x-8">
-            <a href="/produkty" class:list={[ "nav-link hover:text-brand-accent", { "text-brand-accent font-bold": pathname.startsWith('/produkty') } ]}>Produkty</a>
-            <a href="/kalkulacka" class:list={[ "nav-link hover:text-brand-accent", { "text-brand-accent font-bold": pathname === '/kalkulacka' } ]}>Poradce výběru</a>
-            <a href="/o-nas" class:list={[ "nav-link hover:text-brand-accent", { "text-brand-accent font-bold": pathname === '/o-nas' } ]}>O nás</a>
-            <a href="/kontakt" class:list={[ "nav-link hover:text-brand-accent", { "text-brand-accent font-bold": pathname === '/kontakt' } ]}>Kontakt</a>
-        </nav>
-        <div class="flex items-center space-x-4">
-            <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-gray-100 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-text"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
-            </button>
-        </div>
+  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="/" class="h-10">
+      <Image src={logo} alt="Logo Laboratoires" class="h-full w-auto" />
+    </a>
+
+    <nav class="hidden md:flex items-center space-x-8">
+      <a
+        href="/produkty"
+        class:list={[
+          "nav-link hover:text-brand-accent",
+          { "text-brand-accent font-bold": pathname.startsWith('/produkty') }
+        ]}
+      >
+        Produkty
+      </a>
+      <a
+        href="/kalkulacka"
+        class:list={[
+          "nav-link hover:text-brand-accent",
+          { "text-brand-accent font-bold": pathname === '/kalkulacka' }
+        ]}
+      >
+        Poradce výběru
+      </a>
+      <a
+        href="/o-nas"
+        class:list={[
+          "nav-link hover:text-brand-accent",
+          { "text-brand-accent font-bold": pathname === '/o-nas' }
+        ]}
+      >
+        O nás
+      </a>
+      <a
+        href="/kontakt"
+        class:list={[
+          "nav-link hover:text-brand-accent",
+          { "text-brand-accent font-bold": pathname === '/kontakt' }
+        ]}
+      >
+        Kontakt
+      </a>
+    </nav>
+
+    <div class="flex items-center space-x-4">
+      <button
+        id="mobile-menu-button"
+        class="md:hidden p-2 rounded-full hover:bg-gray-100 transition-colors"
+      >
+        <span class="sr-only">Otevřít menu</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="text-brand-text"
+        >
+          <line x1="4" y1="6" x2="20" y2="6" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="18" x2="20" y2="18" />
+        </svg>
+      </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
-        <a href="/produkty" class:list={[ "block text-center py-3 px-6 hover:bg-gray-100 transition-colors", { "text-brand-accent font-bold": pathname.startsWith('/produkty') } ]}>Produkty</a>
-        <a href="/kalkulacka" class:list={[ "block text-center py-3 px-6 hover:bg-gray-100 transition-colors", { "text-brand-accent font-bold": pathname === '/kalkulacka' } ]}>Poradce výběru</a>
-        <a href="/kontakt" class:list={[ "block text-center py-3 px-6 hover:bg-gray-100 transition-colors", { "text-brand-accent font-bold": pathname === '/kontakt' } ]}>Kontakt</a>
-    </div>
-</header> 
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+    <a
+      href="/produkty"
+      class:list={[
+        "block text-center py-3 px-6 hover:bg-gray-100 transition-colors",
+        { "text-brand-accent font-bold": pathname.startsWith('/produkty') }
+      ]}
+    >
+      Produkty
+    </a>
+    <a
+      href="/kalkulacka"
+      class:list={[
+        "block text-center py-3 px-6 hover:bg-gray-100 transition-colors",
+        { "text-brand-accent font-bold": pathname === '/kalkulacka' }
+      ]}
+    >
+      Poradce výběru
+    </a>
+    <a
+      href="/o-nas"
+      class:list={[
+        "block text-center py-3 px-6 hover:bg-gray-100 transition-colors",
+        { "text-brand-accent font-bold": pathname === '/o-nas' }
+      ]}
+    >
+      O nás
+    </a>
+    <a
+      href="/kontakt"
+      class:list={[
+        "block text-center py-3 px-6 hover:bg-gray-100 transition-colors",
+        { "text-brand-accent font-bold": pathname === '/kontakt' }
+      ]}
+    >
+      Kontakt
+    </a>
+  </div>
+</header>

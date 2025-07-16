@@ -1,10 +1,17 @@
+// Opravené relativní cesty k obrázkům
+import imgEnergie from '../assets/obrazky/Energie.jpg';
+import imgImunita from '../assets/obrazky/Imunita.jpg';
+import imgMagnesium from '../assets/obrazky/Magnesium.jpg';
+import imgProbiotika from '../assets/obrazky/Probiotika.jpg';
+import imgVitaminC from '../assets/obrazky/Vitamin.jpg';
+
 export const produkty = [
     {
         slug: 'energie',
         nazev: 'Energie & Paměť',
         podtitulek: 'Pro vaši bystrou mysl',
         kratkyPopis: 'Pro maximální soustředění a podporu kognitivních funkcí.',
-        obrazek: '/obrazky/Energie.jpg',
+        obrazek: imgEnergie,
         obsahHTML: `
             <p>Ať už se učíte na zkoušku, připravujete důležitou prezentaci, nebo se jen potřebujete plně soustředit na práci, náš produkt je váš ideální partner pro podporu kognitivních funkcí.</p>
             <div>
@@ -29,8 +36,7 @@ export const produkty = [
         slug: 'imunita',
         nazev: 'Imunita',
         podtitulek: 'Pro vaši odolnost',
-        kratkyPopis: 'Podpora obranyschopnosti s vitamíny C, D a zinkem.',
-        obrazek: '/obrazky/Imunita.jpg',
+        obrazek: imgImunita,
         obsahHTML: `
             <p>Náš imunitní systém je komplexní síť buněk a procesů, která nás neustále chrání. V období zvýšené zátěže, jako jsou chladné měsíce nebo stresová období, si zaslouží naši podporu.</p>
             <div>
@@ -55,8 +61,7 @@ export const produkty = [
         slug: 'magnesium',
         nazev: 'Magnesium Komplex',
         podtitulek: 'Pro relaxaci a regeneraci',
-        kratkyPopis: 'Proti únavě a pro normální činnost svalů a nervů.',
-        obrazek: '/obrazky/Magnesium.jpg',
+        obrazek: imgMagnesium,
         obsahHTML: `
             <p>Hořčík (magnesium) je pro náš organismus naprosto klíčový minerál. Podílí se na stovkách biochemických procesů v těle a jeho nedostatek se může projevit zvýšenou únavou, svalovými křečemi či podrážděností.</p>
             <div>
@@ -81,8 +86,7 @@ export const produkty = [
         slug: 'probiotika',
         nazev: 'Probiotika',
         podtitulek: 'Pro zdravé trávení',
-        kratkyPopis: 'Pro zdravou střevní mikroflóru a správné zažívání.',
-        obrazek: '/obrazky/Probiotika.jpg',
+        obrazek: imgProbiotika,
         obsahHTML: `
             <p>Zdraví střev je základem celkové vitality. Naše probiotika obsahují komplex živých kultur pro podporu rovnováhy vašeho trávicího systému.</p>
             <div>
@@ -107,8 +111,7 @@ export const produkty = [
         slug: 'vitamin-c',
         nazev: 'Vitamín C',
         podtitulek: 'Základní stavební kámen',
-        kratkyPopis: 'Klíčový antioxidant pro vaši vitalitu a imunitu.',
-        obrazek: '/obrazky/Vitamin.jpg',
+        obrazek: imgVitaminC,
         obsahHTML: `
             <p>Vitamín C je nezbytný pro mnoho tělesných funkcí, od podpory imunity po tvorbu kolagenu pro zdravou pokožku. Naše forma s postupným uvolňováním zajišťuje optimální hladinu po celý den.</p>
             <div>
